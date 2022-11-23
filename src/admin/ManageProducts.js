@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
+import { getCategories } from "../user/helper/userapicalls";
 import BASE from "../core/Base";
 import {getProducts,deleteProduct} from "../user/helper/userapicalls"
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
+  const [categories, setcategories] = useState([]);
   
   const { user, token } = isAuthenticated();
   const preload = () => {
@@ -18,6 +20,17 @@ const ManageProducts = () => {
         setProducts(data);
       }
     });
+
+    getCategories().then(data => {
+      console.log("data is here with me",data)
+      if(data.error){
+          setcategories([])
+      }
+      else{
+        console.log(data)
+          setcategories(data)
+      }
+  })
   };
 
   useEffect(() => {
@@ -55,10 +68,23 @@ const ManageProducts = () => {
             console.log(product)
             return (    
               <div key={index} className="row text-center mb-2 ">
-                <div className="col-3">
+                <div className="col-2">
                   <h3 className="text-light text-left">{product.name}</h3>
                 </div>
-                <div className="col-3">
+                
+                <div className="col-4">
+                {
+                  categories.map((index,element) => {
+                    console.log("",index)
+                    return (index._id === product.category) &&(
+                      <h3 className="text-light text-left">{index.name}</h3>
+                    )
+                  })
+                }
+                </div>
+                
+                
+                <div className="col-2">
                   <Link
                     className="btn btn-success"
                     to={`/admin/product/update/${product._id}`}
@@ -66,11 +92,7 @@ const ManageProducts = () => {
                     <span className="">Update</span>
                   </Link>
                 </div>
-                <div className="col-3">
-                  {/* <p>{product.photo}</p> */}
-                {/* <img src={} alt = "Logo"/> */}
-                </div>
-                <div className="col-3">
+                <div className="col-2">
                   <button
                     onClick={() => {
                       deleteThisProduct(product._id);

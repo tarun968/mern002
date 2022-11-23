@@ -5,7 +5,7 @@ import { getCategories, getProduct, updateProduct } from "../user/helper/userapi
 import { Link, useParams } from "react-router-dom";
 import { render } from "@testing-library/react";
 
-const UpdateProduct = () => {
+const UpdateProducts = () => {
   const {productId} = useParams()
   console.log(productId)
   const [products, setProduct] = useState([]);
@@ -187,4 +187,4 @@ const UpdateProduct = () => {
   );
 }
 
-export default UpdateProduct
+export default UpdateProducts

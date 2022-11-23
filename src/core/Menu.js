@@ -24,7 +24,7 @@ const Menu = () => {
                             A.DASHBOARD
                         </Link>
                     </li>
-                )}
+            )}
 
             {isAuthenticated() && isAuthenticated().user.role !== "1"
                 && (

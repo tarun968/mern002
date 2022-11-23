@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BASE from "../core/Base";
 import { Navigate } from "react-router-dom";
 import { signin, isAuthenticated, authenticate } from "../auth/helper";
-
+import { Link } from "react-router-dom";
 const Signin = () => {
     const [values, setValues] = useState({
         email: "",
@@ -61,21 +61,22 @@ const Signin = () => {
             )
         }
     }
-    const loadingMessage = () => {
-        return (
-            loading && (
-                <div className="alert alert-info">
-                    <h2>Loading...</h2>
-                </div>
-            )
-        )
-    }
+    // const loadingMessage = () => {
+    //     return (
+    //         loading && (
+    //             <div className="alert alert-info">
+    //                 <h2>Loading...</h2>
+    //             </div>
+    //         )
+    //     )
+    // }
     const errorMessage = () => {
         return (
             <div>
                 <div className="alert alert-danger"
                     style={{ display: error ? "" : "none" }}>
-                    Sorry You can not login
+                    Sorry You can not login as your password\emailid is wrong
+                    <Link to='/Forgotten-password'>Forgottent password?</Link>
                 </div>
             </div>
         )
@@ -88,7 +89,7 @@ const Signin = () => {
                     <div className="col-md-6 offset-sm-3 text-left">
                         <form>
                             <div className="form-group">
-                                <label className="text-dark">eMail</label>
+                                <label className="text-light">eMail</label>
                                 <input type="email"
                                     onChange={handleChange("email")}
                                     className="form-control"
@@ -96,7 +97,7 @@ const Signin = () => {
                                 />
                             </div>
                             <div className="form-group">
-                                <label className="text-dark">pAssword</label>
+                                <label className="text-light">pAssword</label>
                                 <input type="password"
                                     onChange={handleChange("password")}
                                     className="form-control"
@@ -113,9 +114,6 @@ const Signin = () => {
     }
     return (
         <BASE Title="Sign IN page" Description="A page for thee user to sign iN!">
-            {
-                loadingMessage()
-            }
             {
                 errorMessage()
             }

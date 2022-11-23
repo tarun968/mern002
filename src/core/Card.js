@@ -13,7 +13,8 @@ const Card = (
         addtocart = true,
         removefromcart = false,
         setreload = f => f,
-        reload = undefined }
+        reload = undefined 
+    }
 ) => {
     const [redirect, setredirect] = useState(false);
     const addTocart = () => {

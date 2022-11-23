@@ -7,13 +7,14 @@ import Cart from './core/Cart'
 import ProductDesc from './user/Productdesc'
 import UserDashboard from './user/UserDashBoard'
 import AdminDashboard from './user/AdminDashBoard'
+import Fgpassword from './user/fgpassword'
 import UserEditProfile from './Userpro/UserEdiprof'
 import Addcategory from './admin/AddCategory'
 import UpdateCategory from './admin/UpdateCategory'
 import ManageCategories from './admin/ManageCategories'
 import AddProduct from './admin/AddProduct'
 import ManageProducts from './admin/ManageProducts'
-import UpdateProduct from './admin/UpdateProduct'
+import UpdateProducts from './admin/UpdateProduct'
 import UserProfile from './Userpro/UserProfile'
 import UserOrder from './Userpro/UserOrders'
 import Orders from './admin/Orders'
@@ -37,12 +38,13 @@ export default function Routing() {
     <Route path="user/edit/profile" element={<UserDashboard />}></Route>
     <Route path="/admin/add/admin" element={<Signupbyadmin />}></Route>
     <Route path="admin" element={<AdminDashboard/>}></Route>
+    <Route path="Forgotten-password" element={<Fgpassword/>}></Route>
     <Route path="admin/create/category" element={<Addcategory/>}></Route>
     <Route path="admin/manage/order" element={<Orders/>}></Route>
     <Route path="admin/admin/category" element={<ManageCategories/>}></Route>
     <Route path="admin/create/product" element={<AddProduct/>}></Route>
     <Route path="admin/manage/product" element={<ManageProducts/>}></Route>
-    <Route path="admin/product/update/:productId" element={<UpdateProduct/>}></Route>
+    <Route path="admin/product/update/:productId" element={<UpdateProducts/>}></Route>
     <Route path="product/:productId" element={<ProductDesc/>}></Route>
     <Route path="admin/category/update/:categoryId" element={<UpdateCategory/>}></Route>
     <Route path="/order/update/:orderId" element={<UserUpdateOders/>}></Route>
